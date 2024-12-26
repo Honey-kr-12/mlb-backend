@@ -69,6 +69,8 @@ export const createProduct = async (req, res) => {
 };
 
 export const getData = async (req, res) => {
+  console.log('hioh');
+  
     try {
       const products = await Product.find(); // Fetch all products from the database
       res.status(200).json({
