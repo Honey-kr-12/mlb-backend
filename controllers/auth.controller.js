@@ -25,8 +25,10 @@ const generateUniqueTicketNumber = async () => {
 };
 
 export const sendOtp = async (req, res, next) => {
+  
   try {
     const { email } = req.body;
+    console.log(email);
 
     if (await User.findOne({ email })) {
       return res.status(401).json({
@@ -54,7 +56,7 @@ export const sendOtp = async (req, res, next) => {
       data: "OTP sent successfully",
     });
   } catch (err) {
-    //console.log(err);
+    console.log(err);
   }
 };
 
