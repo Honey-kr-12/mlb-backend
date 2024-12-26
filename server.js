@@ -11,7 +11,8 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-     "https://main.dsmyi9bdufzdv.amplifyapp.com"
+     "https://main.dsmyi9bdufzdv.amplifyapp.com",
+    "https://mlb.prcompany.org"
   ],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
