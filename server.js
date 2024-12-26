@@ -37,12 +37,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/product", productRoutes);
 app.use("/api/bills", billRoutes);
 
-// Global error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send({ message: "An internal error occurred" });
-});
-
 // Start the server
 app.listen(PORT, () => {
   connectToMongoDB(); // Ensure your database connection logs success or failure
