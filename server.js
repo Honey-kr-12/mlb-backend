@@ -39,5 +39,5 @@ app.use('/api/bills', billRoutes);
 // Start the server
 app.listen(PORT, () => {
     connectToMongoDB();
-    console.log(`Server is running on PORT ${PORT}`);
+    console.log(`Server is running on PORT on ${PORT}`);
 });
