@@ -1,43 +1,50 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectToMongoDB from "./db/connectToMongoDB.js";
-import productRoutes from './routes/productRoutes.js';
-import billRoutes from './routes/billRoutes.js';
-import authRoutes from './routes/authRoutes.js';
-import cors from 'cors'
+import productRoutes from "./routes/productRoutes.js";
+import billRoutes from "./routes/billRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import cors from "cors";
 
+// Load environment variables
+dotenv.config();
 
 const app = express();
+const PORT = 5000; // Use environment variable for PORT if available
+
+// CORS configuration
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-     "https://main.dsmyi9bdufzdv.amplifyapp.com",
-    "https://mlb.prcompany.org"
+    "https://main.dsmyi9bdufzdv.amplifyapp.com",
+    "https://mlb.prcompany.org",
   ],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Enable cookies and authorization headers
+  allowedHeaders: ["Content-Type", "Authorization"], // Customize headers if needed
 };
-  
-  app.use(cors(corsOptions));
-
-
-dotenv.config();
-const PORT = 5000; // You can change the port as needed
+app.use(cors(corsOptions));
 
 // Middleware to parse JSON
 app.use(express.json());
 
-// Define a simple route
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
+// Test Route
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
-app.use('/api/auth', authRoutes);
-app.use('/api/product', productRoutes);
-app.use('/api/bills', billRoutes);
+// API Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/product", productRoutes);
+app.use("/api/bills", billRoutes);
+
+// Global error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send({ message: "An internal error occurred" });
+});
 
 // Start the server
 app.listen(PORT, () => {
-    connectToMongoDB();
-    console.log(`Server is running on PORT on ${PORT}`);
+  connectToMongoDB(); // Ensure your database connection logs success or failure
+  console.log(`Server is running on PORT ${PORT}`);
 });
