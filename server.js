@@ -22,7 +22,7 @@ const corsOptions = {
   app.use(cors(corsOptions));
 
 
-const PORT = 5000; // You can change the port as needed
+const PORT = 5000; // You can change the port as needed okay
 
 // Middleware to parse JSON
 app.use(express.json());
