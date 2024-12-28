@@ -15,11 +15,11 @@ const corsOptions = {
      "https://main.dsmyi9bdufzdv.amplifyapp.com",
     "https://mlb.prcompany.org"
   ],
-  credentials: true,
+  // credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 };
   
-  app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 
 const PORT = 5000; // You can change the port as needed
