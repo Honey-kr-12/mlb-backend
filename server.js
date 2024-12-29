@@ -15,7 +15,7 @@ const corsOptions = {
      "https://main.dsmyi9bdufzdv.amplifyapp.com",
     "https://mlb.prcompany.org"
   ],
-  // credentials: true,
+  credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 };
   

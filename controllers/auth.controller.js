@@ -25,6 +25,7 @@ const generateUniqueTicketNumber = async () => {
 };
 
 export const sendOtp = async (req, res, next) => {
+  console.log("okok");
   
   try {
     const { email } = req.body;
@@ -35,6 +36,7 @@ export const sendOtp = async (req, res, next) => {
         error: "Email already exists",
       });
     }
+console.log("okko");
 
     const options = {
       upperCaseAlphabets: false,
@@ -70,12 +72,13 @@ export const signup = async (req, res) => {
       phoneNumber,
       otp,
     } = req.body;
+console.log("okk");
 
     const recentOtp = await OTP.find({ email })
       .sort({ createdAt: -1 })
       .limit(1);
 
-    //console.log(recentOtp);
+    console.log(recentOtp);
 
     if (recentOtp.length === 0 || otp !== recentOtp[0].otp) {
       return res.status(400).json({
