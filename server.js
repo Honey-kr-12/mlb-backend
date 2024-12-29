@@ -35,6 +35,11 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/bills', billRoutes);
+app.use('/api/get', async (req,res) => {try {
+  res.send("get the data")
+} catch (error) {
+  console.error(error);
+}});
 
 // Start the server
 app.listen(PORT, () => {
